@@ -1,0 +1,10 @@
+[Oo]bj/
+[Bb]in/
+*.user
+*.suo
+*.[Cc]ache
+[Tt]humbs.db
+packages/
+# Log files
+*.log
+.idea

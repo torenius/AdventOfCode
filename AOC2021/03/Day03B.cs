@@ -29,8 +29,7 @@ namespace AOC2021._03
                 var zero = new List<string>();
                 foreach (var s in input)
                 {
-                    var c = s.ToCharArray();
-                    if (c[pos] == '1')
+                    if (s[pos] == '1')
                     {
                         one.Add(s);
                     }
@@ -42,25 +41,11 @@ namespace AOC2021._03
 
                 if (keepCommon)
                 {
-                    if (one.Count >= zero.Count)
-                    {
-                        input = one.ToArray();
-                    }
-                    else
-                    {
-                        input = zero.ToArray();
-                    }
+                    input = one.Count >= zero.Count ? one.ToArray() : zero.ToArray();
                 }
                 else
                 {
-                    if (one.Count >= zero.Count)
-                    {
-                        input = zero.ToArray();
-                    }
-                    else
-                    {
-                        input = one.ToArray();
-                    }
+                    input = one.Count >= zero.Count ? zero.ToArray() : one.ToArray();
                 }
 
                 pos++;

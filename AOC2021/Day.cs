@@ -7,6 +7,11 @@ namespace AOC2021
 {
     public abstract class Day
     {
+        protected Day()
+        {
+            Console.WriteLine(GetType().Name);    
+        }
+        
         private string GetBasePath()
         {
             const string basePath = @"C:\project\AdventOfCode\";

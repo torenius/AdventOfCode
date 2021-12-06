@@ -19,15 +19,21 @@ namespace AOC2021
 
             return Path.Combine(basePath, folder);
         }
-        
-        public string[] GetInput(string filename = "input.txt")
+
+        protected string[] GetInput(string filename = "input.txt")
         {
             return File.ReadAllLines(Path.Combine(GetBasePath(), filename));
         }
 
-        public int[] GetInputAsInt(string filename = "input.txt")
+        protected int[] GetInputAsInt(string filename = "input.txt")
         {
             return File.ReadLines(Path.Combine(GetBasePath(), filename)).Select(int.Parse).ToArray();
+        }
+
+        protected int[] GetInputIntArray(string separator = ",", string filename = "input.txt")
+        {
+            var input = GetInput(filename);
+            return input[0].Split(separator).Select(int.Parse).ToArray();
         }
 
         public abstract void Run();

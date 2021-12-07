@@ -30,7 +30,7 @@ namespace AOC2021
             return File.ReadLines(Path.Combine(GetBasePath(), filename)).Select(int.Parse).ToArray();
         }
 
-        protected int[] GetInputIntArray(string separator = ",", string filename = "input.txt")
+        protected int[] GetInputIntArray(string filename = "input.txt", string separator = ",")
         {
             var input = GetInput(filename);
             return input[0].Split(separator).Select(int.Parse).ToArray();

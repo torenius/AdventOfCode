@@ -6,6 +6,7 @@ using AOC2021._04;
 using AOC2021._05;
 using AOC2021._06;
 using AOC2021._07;
+using AOC2021._08;
 
 namespace AOC2021
 {
@@ -13,7 +14,7 @@ namespace AOC2021
     {
         private static void Main(string[] args)
         {
-            var d = new Day07B();
+            var d = new Day08B();
             d.Run();
         }
     }

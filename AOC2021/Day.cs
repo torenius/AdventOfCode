@@ -36,6 +36,21 @@ namespace AOC2021
             return input[0].Split(separator).Select(int.Parse).ToArray();
         }
 
+        protected int[,] GetInputAsIntMatrix(string filename = "input.txt")
+        {
+            var input = GetInput(filename);
+            var matrix = new int[input.Length, input[0].Length];
+            for (var y = 0; y < input.Length; y++)
+            {
+                for (var x = 0; x < input[y].Length; x++)
+                {
+                    matrix[y, x] = (int)char.GetNumericValue(input[y][x]);
+                }
+            }
+
+            return matrix;
+        }
+
         public abstract void Run();
 
     }

@@ -11,20 +11,12 @@ namespace AOC2021._09
         
         public override void Run()
         {
-            var input = GetInput();
-            _matrix = new int[input.Length, input[0].Length];
-            for (var y = 0; y < input.Length; y++)
-            {
-                for (var x = 0; x < input[y].Length; x++)
-                {
-                    _matrix[y, x] = (int)char.GetNumericValue(input[y][x]);
-                }
-            }
+            _matrix = GetInputAsIntMatrix();
 
             _basins = new List<Basin>();
-            for (var y = 0; y < input.Length; y++)
+            for (var y = 0; y < _matrix.GetLength(0); y++)
             {
-                for (var x = 0; x < input[y].Length; x++)
+                for (var x = 0; x < _matrix.GetLength(1); x++)
                 {
                     if (_matrix[y, x] == 9) continue;
                     

@@ -20,6 +20,11 @@ namespace AOC2021
             return Path.Combine(basePath, folder);
         }
 
+        protected string GetInputAsString(string filename = "input.txt")
+        {
+            return File.ReadAllText(Path.Combine(GetBasePath(), filename));
+        }
+
         protected string[] GetInput(string filename = "input.txt")
         {
             return File.ReadAllLines(Path.Combine(GetBasePath(), filename));

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using AOC2021._01;
 using AOC2021._02;
 using AOC2021._03;
@@ -12,6 +13,7 @@ using AOC2021._10;
 using AOC2021._11;
 using AOC2021._12;
 using AOC2021._13;
+using AOC2021._14;
 
 namespace AOC2021
 {
@@ -19,8 +21,12 @@ namespace AOC2021
     {
         private static void Main(string[] args)
         {
-            var d = new Day13B();
+            var d = new Day14A();
+
+            var stop = Stopwatch.StartNew();
             d.Run();
+            stop.Stop();
+            Console.WriteLine(stop.Elapsed);
         }
     }
 }

@@ -14,6 +14,7 @@ using AOC2021._11;
 using AOC2021._12;
 using AOC2021._13;
 using AOC2021._14;
+using AOC2021._15;
 
 namespace AOC2021
 {
@@ -21,7 +22,7 @@ namespace AOC2021
     {
         private static void Main(string[] args)
         {
-            var d = new Day14A();
+            var d = new Day15B();
 
             var stop = Stopwatch.StartNew();
             d.Run();

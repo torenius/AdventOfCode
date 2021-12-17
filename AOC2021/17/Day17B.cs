@@ -68,9 +68,7 @@ namespace AOC2021._17
 
         private bool HaveGoneToFar(Point p)
         {
-            if (p.X > _maxX || p.Y < _minY) return true;
-
-            return false;
+            return p.X > _maxX || p.Y < _minY;
         }
     }
 }

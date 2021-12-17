@@ -28,9 +28,9 @@ namespace AOC2021._17
 
             var maxY = int.MinValue;
             var probe = new Point(0, 0);
-            for (var x = -maxXvelocity; x < maxXvelocity; x++)
+            for (var x = -maxXvelocity; x <= maxXvelocity; x++)
             {
-                for (var y = -maxYvelocity; y < maxYvelocity; y++)
+                for (var y = -maxYvelocity; y <= maxYvelocity; y++)
                 {
                     if (x == 0 && y == 0) break;
                     
@@ -75,9 +75,7 @@ namespace AOC2021._17
 
         private bool HaveGoneToFar(Point p)
         {
-            if (p.X > _maxX || p.Y < _minY) return true;
-
-            return false;
+            return p.X > _maxX || p.Y < _minY;
         }
     }
 }

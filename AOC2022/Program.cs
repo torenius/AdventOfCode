@@ -1,3 +1,14 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using System.Diagnostics;
+using AOC2022._01;
 
-Console.WriteLine("Hello, World!");
+var day = new Day01B();
+
+var stop = Stopwatch.StartNew();
+var result = day.Run();
+stop.Stop();
+
+Console.WriteLine();
+Console.WriteLine(result);
+Console.WriteLine();
+
+Console.WriteLine(stop.Elapsed);

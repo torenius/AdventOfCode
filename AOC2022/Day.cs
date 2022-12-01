@@ -51,5 +51,5 @@ public abstract class Day
         return matrix;
     }
 
-    public abstract void Run();
+    public abstract long Run();
 }

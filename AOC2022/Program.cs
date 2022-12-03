@@ -1,8 +1,9 @@
 ﻿using System.Diagnostics;
 using AOC2022._01;
 using AOC2022._02;
+using AOC2022._03;
 
-var day = new Day02B();
+var day = new Day03B();
 
 var stop = Stopwatch.StartNew();
 var result = day.Run();

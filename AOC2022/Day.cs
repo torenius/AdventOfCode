@@ -25,6 +25,11 @@ public abstract class Day
         return File.ReadAllLines(Path.Combine(GetBasePath(), filename));
     }
 
+    protected List<string[]> GetInputRowAsStringArray(string filename = "input.txt", string separator = ",")
+    {
+        return GetInputAsStringArray(filename).Select(row => row.Split(separator)).ToList();
+    }
+
     protected int[] GetInputAsInt(string filename = "input.txt")
     {
         return File.ReadLines(Path.Combine(GetBasePath(), filename)).Select(int.Parse).ToArray();

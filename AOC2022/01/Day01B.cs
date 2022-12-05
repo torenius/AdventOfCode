@@ -2,7 +2,7 @@
 
 public class Day01B : Day
 {
-    public override long Run()
+    public override string Run()
     {
         var input = GetInputAsStringArray();
 
@@ -25,6 +25,6 @@ public class Day01B : Day
         
         list.Add(currentCount);
 
-        return list.OrderByDescending(x => x).Take(3).Sum();
+        return list.OrderByDescending(x => x).Take(3).Sum().ToString();
     }
 }

@@ -2,7 +2,7 @@
 
 public class Day04A : Day
 {
-    public override long Run()
+    public override string Run()
     {
         var input = GetInputRowAsStringArray();
 
@@ -15,7 +15,7 @@ public class Day04A : Day
             }
         }
 
-        return fullContainingPairs;
+        return fullContainingPairs.ToString();
     }
 
     private static bool IsFullyContained(string first, string second)

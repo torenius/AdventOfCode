@@ -2,7 +2,7 @@
 
 public class Day03B : Day
 {
-    public override long Run()
+    public override string Run()
     {
         var input = GetInputAsStringArray();
 
@@ -19,7 +19,7 @@ public class Day03B : Day
             score += GetScore(common);
         }
 
-        return score;
+        return score.ToString();
     }
 
     private static long GetScore(IEnumerable<char> inBoth)

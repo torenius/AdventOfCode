@@ -2,7 +2,7 @@
 
 public class Day02B : Day
 {
-    public override long Run()
+    public override string Run()
     {
         var input = GetInputAsStringArray();
 
@@ -31,7 +31,7 @@ public class Day02B : Day
             yourScore += YourScore(opponent, you);
         }
 
-        return yourScore;
+        return yourScore.ToString();
     }
 
     private static int YourScore(RockPaperScissor opponent, RockPaperScissor you)

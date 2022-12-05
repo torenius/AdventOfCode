@@ -2,7 +2,7 @@
 
 public class Day04B : Day
 {
-    public override long Run()
+    public override string Run()
     {
         var input = GetInputRowAsStringArray();
 
@@ -15,7 +15,7 @@ public class Day04B : Day
             }
         }
 
-        return overlappingPairs;
+        return overlappingPairs.ToString();
     }
 
     private static bool IsOverlapping(string first, string second)

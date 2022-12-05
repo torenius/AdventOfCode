@@ -2,7 +2,7 @@
 
 public class Day01A : Day
 {
-    public override long Run()
+    public override string Run()
     {
         var input = GetInputAsStringArray();
 
@@ -31,6 +31,6 @@ public class Day01A : Day
             currentMax = currentCount;
         }
 
-        return currentMax;
+        return currentMax.ToString();
     }
 }

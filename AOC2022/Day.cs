@@ -17,7 +17,7 @@ public abstract class Day
 
     protected string GetInputAsString(string filename = "input.txt")
     {
-        return File.ReadAllText(Path.Combine(GetBasePath(), filename));
+        return File.ReadAllText(Path.Combine(GetBasePath(), filename)).Replace(Environment.NewLine, "\n");
     }
 
     protected string[] GetInputAsStringArray(string filename = "input.txt")

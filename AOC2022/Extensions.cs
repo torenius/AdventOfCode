@@ -29,4 +29,9 @@ public static class Extensions
     {
         return long.Parse(input);
     }
+
+    public static int LCM(this IEnumerable<int> numbers)
+    {
+        return Helper.LCM(numbers);
+    }
 }

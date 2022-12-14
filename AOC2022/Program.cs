@@ -11,9 +11,11 @@ using AOC2022._09;
 using AOC2022._10;
 using AOC2022._11;
 using AOC2022._12;
+using AOC2022._13;
+using AOC2022._14;
 
 Console.ForegroundColor = ConsoleColor.DarkRed;
-var day = new Day12B();
+var day = new Day14B();
 
 Console.ForegroundColor = ConsoleColor.Green;
 var stop = Stopwatch.StartNew();

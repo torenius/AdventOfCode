@@ -4,7 +4,7 @@ namespace AOC2022._11;
 
 public class Day11A : Day
 {
-    public override string Run()
+    protected override string Run()
     {
         var input = GetInputAsString().Split("\n\n");
         var monkeys = input.Select(i => new Monkey(i)).ToList();

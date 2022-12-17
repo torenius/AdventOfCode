@@ -4,7 +4,7 @@ namespace AOC2022._07;
 
 public class Day07A : Day
 {
-    public override string Run()
+    protected override string Run()
     {
         var input = GetInputAsStringArray();
 

@@ -2,7 +2,7 @@
 
 public class Day13A : Day
 {
-    public override string Run()
+    protected override string Run()
     {
         var input = GetInputAsString().Split("\n\n");
 

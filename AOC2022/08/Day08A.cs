@@ -2,7 +2,7 @@
 
 public class Day08A : Day
 {
-    public override string Run()
+    protected override string Run()
     {
         var input = GetInputAsIntMatrix();
         var visible = new bool[input.GetLength(0), input.GetLength(1)];

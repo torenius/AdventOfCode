@@ -1,9 +1,14 @@
-﻿namespace AOC2022;
+﻿using System.Diagnostics;
+
+namespace AOC2022;
 
 public abstract class Day
 {
+    private Stopwatch _stopwatch;
+    
     protected Day()
     {
+        Console.ForegroundColor = ConsoleColor.DarkRed;
         Console.WriteLine(GetType().Name);    
     }
     
@@ -71,5 +76,29 @@ public abstract class Day
         return matrix;
     }
 
-    public abstract string Run();
+    protected abstract string Run();
+
+    public void Start()
+    {
+        Console.ForegroundColor = ConsoleColor.Green;
+        
+        _stopwatch = Stopwatch.StartNew();
+        var result = Run();
+        _stopwatch.Stop();
+        
+        Console.WriteLine();
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        Console.WriteLine(result);
+        Console.WriteLine();
+
+        PrintElapsedTime();
+    }
+
+    protected void PrintElapsedTime()
+    {
+        var color = Console.ForegroundColor;
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.WriteLine(_stopwatch.Elapsed);
+        Console.ForegroundColor = color;
+    }
 }

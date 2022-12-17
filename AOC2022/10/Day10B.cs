@@ -2,7 +2,7 @@
 
 public class Day10B : Day
 {
-    public override string Run()
+    protected override string Run()
     {
         var input = GetInputAsStringArray();
 

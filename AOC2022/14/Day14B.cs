@@ -4,7 +4,7 @@ namespace AOC2022._14;
 
 public class Day14B : Day
 {
-    public override string Run()
+    protected override string Run()
     {
         var input = GetInputAsStringArray();
         var cave = new Dictionary<Point, char>();

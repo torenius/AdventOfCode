@@ -20,7 +20,7 @@ public class Day09B : Day
     
     private HashSet<Point> TailLocations = new HashSet<Point>();
 
-    public override string Run()
+    protected override string Run()
     {
         var input = GetInputAsStringArray();
 

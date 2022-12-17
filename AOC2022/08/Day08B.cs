@@ -2,7 +2,7 @@
 
 public class Day08B : Day
 {
-    public override string Run()
+    protected override string Run()
     {
         var input = GetInputAsIntMatrix();
         var viewDistance = new int[input.GetLength(0), input.GetLength(1)];

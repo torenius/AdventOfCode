@@ -4,7 +4,7 @@ namespace AOC2022._12;
 
 public class Day12A : Day
 {
-    public override string Run()
+    protected override string Run()
     {
         var input = GetInputAsCharMatrix();
         var start = FindAndReplace(input, 'S', 'a');

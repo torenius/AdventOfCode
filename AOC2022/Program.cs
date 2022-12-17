@@ -14,18 +14,5 @@ using AOC2022._12;
 using AOC2022._13;
 using AOC2022._14;
 
-Console.ForegroundColor = ConsoleColor.DarkRed;
-var day = new Day14B();
+new Day14B().Start();
 
-Console.ForegroundColor = ConsoleColor.Green;
-var stop = Stopwatch.StartNew();
-var result = day.Run();
-stop.Stop();
-
-Console.WriteLine();
-Console.ForegroundColor = ConsoleColor.DarkGreen;
-Console.WriteLine(result);
-Console.WriteLine();
-
-Console.ForegroundColor = ConsoleColor.White;
-Console.WriteLine(stop.Elapsed);

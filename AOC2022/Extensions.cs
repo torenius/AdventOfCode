@@ -1,4 +1,6 @@
-﻿namespace AOC2022;
+﻿using System.Drawing;
+
+namespace AOC2022;
 
 public static class Extensions
 {
@@ -33,5 +35,26 @@ public static class Extensions
     public static int LCM(this IEnumerable<int> numbers)
     {
         return Helper.LCM(numbers);
+    }
+
+    public static int CalculateManhattanDistance(this Point from, Point to)
+    {
+        var dx = Math.Abs(from.X - to.X);
+        var dy = Math.Abs(from.Y - to.Y);
+        return dx + dy;
+    }
+    
+    public static int CalculateEuclideanDistance(this Point from, Point to)
+    {
+        var dx = Math.Abs(from.X - to.X);
+        var dy = Math.Abs(from.Y - to.Y);
+        return (int)Math.Sqrt(dx * dx + dy * dy);
+    }
+    
+    public static int CalculateChebyshevDistance(this Point from, Point to)
+    {
+        var dx = Math.Abs(from.X - to.X);
+        var dy = Math.Abs(from.Y - to.Y);
+        return (dx + dy) - Math.Min(dx, dy);
     }
 }

@@ -35,15 +35,9 @@ public abstract class Day
         return GetInputAsStringArray(filename).Select(row => row.Split(separator)).ToList();
     }
 
-    protected int[] GetInputAsInt(string filename = "input.txt")
+    protected int[] GetInputAsIntArray(string filename = "input.txt")
     {
         return File.ReadLines(Path.Combine(GetBasePath(), filename)).Select(int.Parse).ToArray();
-    }
-
-    protected int[] GetInputIntArray(string filename = "input.txt", string separator = ",")
-    {
-        var input = GetInputAsStringArray(filename);
-        return input[0].Split(separator).Select(int.Parse).ToArray();
     }
 
     protected int[,] GetInputAsIntMatrix(string filename = "input.txt")

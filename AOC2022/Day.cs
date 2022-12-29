@@ -88,11 +88,12 @@ public abstract class Day
         PrintElapsedTime();
     }
 
-    protected void PrintElapsedTime()
+    protected void PrintElapsedTime(string comment = "")
     {
         var color = Console.ForegroundColor;
         Console.ForegroundColor = ConsoleColor.White;
-        Console.WriteLine(_stopwatch.Elapsed);
+        Console.Write(_stopwatch.Elapsed);
         Console.ForegroundColor = color;
+        Console.WriteLine(" " + comment);
     }
 }

@@ -22,4 +22,24 @@ public static class Helper
     {
         return numbers.Aggregate((sum, n) => LCM(sum, n));
     }
+
+    public static int Min(int a, int b)
+    {
+        return Math.Min(a, b);
+    }
+
+    public static int Min(int a, int b, int c)
+    {
+        return Min(Min(a, b), c);
+    }
+
+    public static int Max(int a, int b)
+    {
+        return Math.Max(a, b);
+    }
+
+    public static int Max(int a, int b, int c)
+    {
+        return Max(Max(a, b), c);
+    }
 }

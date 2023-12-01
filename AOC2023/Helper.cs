@@ -1,4 +1,4 @@
-﻿namespace AOC2015;
+﻿namespace AOC2023;
 
 public static class Helper
 {

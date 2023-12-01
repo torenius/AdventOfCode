@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace AOC2015;
+namespace AOC2023;
 
 public static class Extensions
 {
@@ -21,7 +21,6 @@ public static class Extensions
 
         return result.ToArray();
     }
-
     public static int ToInt(this string input)
     {
         return int.Parse(input);

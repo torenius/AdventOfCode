@@ -6,5 +6,6 @@ using AOC2015._05;
 using AOC2015._06;
 using AOC2015._07;
 using AOC2015._08;
+using AOC2015._09;
 
-new Day08B().Start();
+new Day09B().Start();

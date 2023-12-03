@@ -12,5 +12,6 @@ using AOC2015._11;
 using AOC2015._12;
 using AOC2015._13;
 using AOC2015._14;
+using AOC2015._15;
 
-new Day14B().Start();
+new Day15B().Start();

@@ -42,4 +42,40 @@ public static class Helper
     {
         return Max(Max(a, b), c);
     }
+
+    public static List<List<T>> GetAllCombinations<T>(IEnumerable<T> list) where T : struct
+    {
+        return GetAllCombinations(new List<T>(), list.ToArray());
+    }
+    
+    public static List<List<string>> GetAllCombinations(IEnumerable<string> list)
+    {
+        return GetAllCombinations(new List<string>(), list.ToArray());
+    }
+    
+    private static List<List<T>> GetAllCombinations<T>(List<T> current, T[] possibleNext)
+    {
+        if (possibleNext.Length == 0)
+        {
+            return new List<List<T>>
+            {
+                current
+            };
+        }
+
+        var result = new List<List<T>>();
+        for (var i = 0; i < possibleNext.Length; i++)
+        {
+            var first = possibleNext[i];
+            var left = i == 0 ? Array.Empty<T>() : possibleNext[..i];
+            var right = i + 1 == possibleNext.Length ? Array.Empty<T>() : possibleNext[(i+1)..];
+
+            var newCurrent = current.ToList();
+            newCurrent.Add(first);
+            
+            result.AddRange(GetAllCombinations(newCurrent, left.Concat(right).ToArray()));
+        }
+
+        return result;
+    }
 }

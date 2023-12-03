@@ -1,4 +1,6 @@
-﻿namespace AOC2015;
+﻿using System.Text;
+
+namespace AOC2015;
 
 public static class Helper
 {
@@ -77,5 +79,54 @@ public static class Helper
         }
 
         return result;
+    }
+
+    public static void Print(char[,] matrix)
+    {
+        var yLength = matrix.GetLength(0);
+        var xLength = matrix.GetLength(1);
+        var sb = new StringBuilder(yLength * xLength + yLength * 2); // Size + NewLine chars
+        
+        for (var y = 0; y < yLength; y++)
+        {
+            for (var x = 0; x < xLength; x++)
+            {
+                sb.Append(matrix[y,x]);
+            }
+
+            sb.AppendLine();
+        }
+
+        Console.Write(sb.ToString());
+    }
+    
+    public static List<(int Y, int X)> GetAdjacentCoordinates(int y, int x) => new()
+    {
+        {(y - 1, x - 1)}, {(y - 1, x)}, {(y - 1, x + 1)},
+                {(y, x - 1)}, {(y, x + 1)},
+        {(y + 1, x - 1)}, {(y + 1, x)}, {(y + 1, x + 1)}
+    };
+    
+    public static List<(int Y, int X)> GetNineGridCoordinates(int y, int x) => new()
+    {
+        {(y - 1, x - 1)}, {(y - 1, x)}, {(y - 1, x + 1)},
+            {(y, x - 1)}, {(y, x)}, {(y, x + 1)},
+        {(y + 1, x - 1)}, {(y + 1, x)}, {(y + 1, x + 1)}
+    };
+
+    public static char[,] Copy(char[,] input)
+    {
+        var yLength = input.GetLength(0);
+        var xLength = input.GetLength(1);
+        var matrix = new char[yLength, xLength];
+        for (var y = 0; y < yLength; y++)
+        {
+            for (var x = 0; x < xLength; x++)
+            {
+                matrix[y, x] = input[y, x];
+            }
+        }
+
+        return matrix;
     }
 }

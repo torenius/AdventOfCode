@@ -2,5 +2,6 @@
 using AOC2023._02;
 using AOC2023._03;
 using AOC2023._04;
+using AOC2023._05;
 
-new Day04B().Start();
+new Day05B().Start();

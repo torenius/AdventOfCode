@@ -70,7 +70,7 @@ public abstract class Day
         return matrix;
     }
 
-    protected abstract string Run();
+    protected abstract object Run();
 
     public void Start()
     {

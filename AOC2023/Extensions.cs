@@ -21,20 +21,12 @@ public static class Extensions
 
         return result.ToArray();
     }
-    public static int ToInt(this string input)
-    {
-        return int.Parse(input);
-    }
-    
-    public static long ToLong(this string input)
-    {
-        return long.Parse(input);
-    }
 
-    public static int LCM(this IEnumerable<int> numbers)
-    {
-        return Helper.LCM(numbers);
-    }
+    public static int ToInt(this string input) => int.Parse(input);
+    public static long ToLong(this string input) => long.Parse(input);
+
+    public static int LCM(this IEnumerable<int> numbers) => Helper.LCM(numbers);
+    public static long LCM(this IEnumerable<long> numbers) => Helper.LCM(numbers);
 
     public static int CalculateManhattanDistance(this Point from, Point to)
     {

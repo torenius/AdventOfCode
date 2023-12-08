@@ -12,13 +12,26 @@ public static class Helper
         }
         return a;
     }
-
-    public static int LCM(int a, int b)
+    
+    public static long GCD(long a, long b)
     {
-        return (a / GCD(a, b)) * b;
+        while (b != 0)
+        {
+            var temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
     }
 
+    public static int LCM(int a, int b) => (a / GCD(a, b)) * b;
+    public static long LCM(long a, long b) => (a / GCD(a, b)) * b;
+
     public static int LCM(IEnumerable<int> numbers)
+    {
+        return numbers.Aggregate((sum, n) => LCM(sum, n));
+    }
+    public static long LCM(IEnumerable<long> numbers)
     {
         return numbers.Aggregate((sum, n) => LCM(sum, n));
     }

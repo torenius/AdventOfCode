@@ -25,6 +25,35 @@ public static class Helper
         return numbers.Aggregate((sum, n) => LCM(sum, n));
     }
 
+    public static List<int> GetDivisors(int n)
+    {
+        var result = new List<int>();
+        switch (n)
+        {
+            case <= 0:
+                return result;
+            case 1:
+                result.Add(1);
+                return result;
+        }
+
+        var sqrt = (int) Math.Sqrt(n);
+        for (var i = 1; i <= sqrt; i++)
+        {
+            if (n % i == 0)
+            {
+                result.Add(i);
+                if (i != n / i)
+                {
+                    result.Add(n / i);
+                }
+            }
+        }
+        
+        result.Sort();
+        return result;
+    }
+
     public static int Min(int a, int b)
     {
         return Math.Min(a, b);

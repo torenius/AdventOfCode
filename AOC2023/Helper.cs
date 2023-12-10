@@ -55,4 +55,46 @@ public static class Helper
     {
         return Max(Max(a, b), c);
     }
+    
+    public static Func<T, IEnumerable<T>> ShortestPath<T>(T start, Func<T, IEnumerable<T>> children) where T : IEquatable<T>
+    {
+        var previous = new Dictionary<T, T> {{start, start}};
+
+        var queue = new Queue<T>();
+        queue.Enqueue(start);
+
+        while (queue.Any())
+        {
+            var current = queue.Dequeue();
+            foreach (var neighbor in children(current).Where(x => !previous.ContainsKey(x)))
+            {
+                previous.Add(neighbor, current);
+                queue.Enqueue(neighbor);
+            }
+        }
+        
+        return Path;
+
+        IEnumerable<T> Path(T end)
+        {
+            var path = new List<T>();
+
+            var current = end;
+            while (!current.Equals(start))
+            {
+                path.Add(current);
+
+                if (previous.TryGetValue(current, out var value))
+                {
+                    current = value;
+                }
+                else
+                {
+                    return new List<T>();
+                }
+            }
+
+            return path;
+        }
+    }
 }

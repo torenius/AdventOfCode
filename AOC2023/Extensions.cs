@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Text;
 
 namespace AOC2023;
 
@@ -47,5 +48,24 @@ public static class Extensions
         var dx = Math.Abs(from.X - to.X);
         var dy = Math.Abs(from.Y - to.Y);
         return (dx + dy) - Math.Min(dx, dy);
+    }
+    
+    public static string ToText(this char[,] matrix)
+    {
+        var yLength = matrix.GetLength(0);
+        var xLength = matrix.GetLength(1);
+        var sb = new StringBuilder(yLength * xLength + yLength * 2); // Size + NewLine chars
+        
+        for (var y = 0; y < yLength; y++)
+        {
+            for (var x = 0; x < xLength; x++)
+            {
+                sb.Append(matrix[y,x]);
+            }
+
+            sb.AppendLine();
+        }
+
+        return sb.ToString();
     }
 }

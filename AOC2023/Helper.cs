@@ -56,6 +56,25 @@ public static class Helper
         return Max(Max(a, b), c);
     }
     
+    public static IEnumerable<T> BreadthFirst<T>(T start, Func<T, IEnumerable<T>> children) where T : IEquatable<T>
+    {
+        var previous = new HashSet<T> {start};
+
+        var queue = new Queue<T>();
+        queue.Enqueue(start);
+
+        while (queue.Any())
+        {
+            var current = queue.Dequeue();
+            yield return current;
+            foreach (var neighbor in children(current).Where(x => !previous.Contains(x)))
+            {
+                previous.Add(neighbor);
+                queue.Enqueue(neighbor);
+            }
+        }
+    }
+    
     public static Func<T, IEnumerable<T>> ShortestPath<T>(T start, Func<T, IEnumerable<T>> children) where T : IEquatable<T>
     {
         var previous = new Dictionary<T, T> {{start, start}};
@@ -96,5 +115,26 @@ public static class Helper
 
             return path;
         }
+    }
+    
+    public static void Print(char[,] matrix, Dictionary<char, ConsoleColor> colorMapping)
+    {
+        var defaultColor = Console.ForegroundColor;
+        var yLength = matrix.GetLength(0);
+        var xLength = matrix.GetLength(1);
+        
+        for (var y = 0; y < yLength; y++)
+        {
+            for (var x = 0; x < xLength; x++)
+            {
+                Console.ForegroundColor = colorMapping.GetValueOrDefault(matrix[y, x], defaultColor);
+                Console.Write(matrix[y, x]);
+            }
+
+            Console.WriteLine();
+        }
+        
+        Console.WriteLine();
+        Console.ForegroundColor = defaultColor;
     }
 }

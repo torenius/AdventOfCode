@@ -1,4 +1,8 @@
-﻿namespace AOC2023;
+﻿using System.Drawing;
+using System.Runtime.Intrinsics.X86;
+using System.Text;
+
+namespace AOC2023;
 
 public static class Helper
 {
@@ -116,6 +120,28 @@ public static class Helper
             return path;
         }
     }
+
+    public static void Print(char[,] matrix, List<Point> points, ConsoleColor pointColor = ConsoleColor.DarkRed)
+    {
+        var defaultColor = Console.ForegroundColor;
+        var yLength = matrix.GetLength(0);
+        var xLength = matrix.GetLength(1);
+        
+        for (var y = 0; y < yLength; y++)
+        {
+            for (var x = 0; x < xLength; x++)
+            {
+                Console.ForegroundColor = points.Any(p => p.X == x && p.Y == y) ? pointColor : defaultColor;
+                Console.Write(matrix[y, x]);
+            }
+
+            Console.WriteLine();
+        }
+        
+        Console.WriteLine();
+        Console.ForegroundColor = defaultColor;
+    }
+    
     
     public static void Print(char[,] matrix, Dictionary<char, ConsoleColor> colorMapping)
     {
@@ -136,5 +162,26 @@ public static class Helper
         
         Console.WriteLine();
         Console.ForegroundColor = defaultColor;
+    }
+    
+    public static void Print(List<Point> points)
+    {
+        var minY = points.Min(e => e.Y);
+        var maxY = points.Max(e => e.Y);
+        var minX = points.Min(e => e.X);
+        var maxX = points.Max(e => e.X);
+
+        var sb = new StringBuilder();
+        for (var y = minY; y <= maxY; y++)
+        {
+            for (var x = minX; x <= maxX; x++)
+            {
+                sb.Append(points.Any(e => e.X == x && e.Y == y) ? '#' : '.');
+            }
+
+            sb.AppendLine();
+        }
+        
+        Console.WriteLine(sb.ToString());
     }
 }

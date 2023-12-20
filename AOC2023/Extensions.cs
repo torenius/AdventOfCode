@@ -68,4 +68,35 @@ public static class Extensions
 
         return sb.ToString();
     }
+    
+    public static char[,] ToCharArray(this List<Point> points)
+    {
+        var minY = points.Min(e => e.Y);
+        var maxY = points.Max(e => e.Y);
+        var minX = points.Min(e => e.X);
+        var maxX = points.Max(e => e.X);
+
+        var yOffset = 0 - minY;
+        var xOffset = 0 - minX;
+        var yDiff = (maxY - minY) + 1;
+        var xDiff = (maxX - minX) + 1;
+        var result = new char[yDiff, xDiff];
+        
+        for (var y = minY; y <= maxY; y++)
+        {
+            for (var x = minX; x <= maxX; x++)
+            {
+                if (points.Any(p => p.Y == y && p.X == x))
+                {
+                    result[y + yOffset, x + xOffset] = '#';
+                }
+                else
+                {
+                    result[y + yOffset, x + xOffset] = '.';
+                }
+            }
+        }
+
+        return result;
+    }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using System.Runtime.Intrinsics.X86;
 using System.Text;
 
 namespace AOC2023;
@@ -120,8 +119,185 @@ public static class Helper
             return path;
         }
     }
+    
+    public static (Dictionary<T, int> Costs, Dictionary<T, T> Parents, Func<T, IEnumerable<(T Node, int Cost)>> Path) Dijkstra<T>(Helper.DijkstraGraph<T> graph, T start) where T : IEquatable<T>
+    {
+        var queue = new Dictionary<T, int>();
+        var costs = new Dictionary<T, int>();
+        var parents = new Dictionary<T, T>();
+        var alreadyDequeued = new HashSet<T>();
+        
+        // Populate queue
+        foreach (var vertex in graph.Connections.Keys)
+        {
+            queue.Add(vertex, int.MaxValue);
+        }
+        
+        // Set start to zero so that will be the first to dequeue
+        queue[start] = 0;
+        
+        costs.Add(start, 0);
+        parents.Add(start, start);
 
+        while (queue.Count > 0)
+        {
+            var q = queue.OrderBy(x => x.Value).Select(x => new
+            {
+                Current = x.Key,
+                Priority = x.Value
+            }).First();
+
+            queue.Remove(q.Current);
+
+            alreadyDequeued.Add(q.Current);
+
+            // Add or update cost
+            if (!costs.TryAdd(q.Current, q.Priority))
+            {
+                costs[q.Current] = q.Priority;
+            } ;
+            
+            foreach(var edge in graph.Connections[q.Current])
+            {
+                // For undirected graphs
+                var destination = edge.Source.Equals(q.Current) ? edge.Destination : edge.Source;
+                
+                // If already dequeued, we already found a shorter path
+                if (alreadyDequeued.Contains(destination))
+                {
+                    continue;
+                }
+
+                var cost = costs[q.Current] + edge.Cost;
+
+                var currentCost = queue[destination];
+                if (cost < currentCost)
+                {
+                    queue[destination] = cost;
+
+                    if (!parents.TryAdd(destination, q.Current))
+                    {
+                        parents[destination] = q.Current;
+                    }
+                }
+            }
+        }
+
+        return (costs, parents, Path);
+
+        IEnumerable<(T Node, int Cost)> Path(T end)
+        {
+            try
+            {
+                var path = new List<(T, int)>();
+
+                var current = end;
+                while (!current.Equals(start))
+                {
+                    var cost = costs[current];
+                    path.Add((current, cost));
+
+                    if (parents.TryGetValue(current, out var value))
+                    {
+                        current = value;
+                    }
+                    else
+                    {
+                        return Enumerable.Empty<(T, int)>();
+                    }
+                }
+
+                return path;
+            }
+            catch
+            {
+                return Enumerable.Empty<(T, int)>();
+            }
+        }
+    }
+    
+    public class DijkstraGraph<T> where T : IEquatable<T>
+    {
+        public Dictionary<T, List<DijkstraEdge<T>>> Connections { get; private set; } = new();
+
+        public void AddDirectedEdge(T source, T destination, int cost)
+        {
+            if (Connections.ContainsKey(source))
+            {
+                Connections[source].Add(new DijkstraEdge<T>(source, destination, cost));
+            }
+            else
+            {
+                Connections.Add(source, new List<DijkstraEdge<T>>{ new (source, destination, cost) });
+            }
+
+            if (!Connections.ContainsKey(destination))
+            {
+                Connections.Add(destination, new List<DijkstraEdge<T>>());
+            }
+        }
+
+        public void AddUndirectedEdge(T source, T destination, int cost)
+        {
+            if (Connections.ContainsKey(source))
+            {
+                Connections[source].Add(new DijkstraEdge<T>(source, destination, cost));
+            }
+            else
+            {
+                Connections.Add(source, new List<DijkstraEdge<T>>{ new (source, destination, cost) });
+            }
+            
+            if (Connections.ContainsKey(destination))
+            {
+                Connections[destination].Add(new DijkstraEdge<T>(destination, source, cost));
+            }
+            else
+            {
+                Connections.Add(destination, new List<DijkstraEdge<T>>{ new (destination, source, cost) });
+            }
+        }
+    }
+    public class DijkstraEdge<T>
+    {
+        public DijkstraEdge(T source, T destination, int cost)
+        {
+            Source = source;
+            Destination = destination;
+            Cost = cost;
+        }
+
+        public DijkstraEdge()
+        {
+        }
+
+        public T Source { get; init; }
+        public T Destination { get; init; }
+        public int Cost { get; init; }
+    }
+    
     public static void Print(char[,] matrix, List<Point> points, ConsoleColor pointColor = ConsoleColor.DarkRed)
+    {
+        var defaultColor = Console.ForegroundColor;
+        var yLength = matrix.GetLength(0);
+        var xLength = matrix.GetLength(1);
+        
+        for (var y = 0; y < yLength; y++)
+        {
+            for (var x = 0; x < xLength; x++)
+            {
+                Console.ForegroundColor = points.Any(p => p.X == x && p.Y == y) ? pointColor : defaultColor;
+                Console.Write(matrix[y, x]);
+            }
+
+            Console.WriteLine();
+        }
+        
+        Console.WriteLine();
+        Console.ForegroundColor = defaultColor;
+    }
+    
+    public static void Print(int[,] matrix, List<Point> points, ConsoleColor pointColor = ConsoleColor.DarkRed)
     {
         var defaultColor = Console.ForegroundColor;
         var yLength = matrix.GetLength(0);

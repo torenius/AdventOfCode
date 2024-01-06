@@ -9,9 +9,15 @@ using AOC2023._08;
 using AOC2023._09;
 using AOC2023._10;
 using AOC2023._11;
-using AOC2023._14;
+using AOC2023._12;
 using AOC2023._13;
+using AOC2023._14;
 using AOC2023._15;
 using AOC2023._16;
+using AOC2023._18;
+using AOC2023._19;
+using AOC2023._20;
+using AOC2023._21;
+using AOC2023._23;
 
-new Day16B().Start();
+new Day23B().Start();

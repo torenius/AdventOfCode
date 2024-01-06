@@ -99,4 +99,14 @@ public static class Extensions
 
         return result;
     }
+
+    public static IEnumerable<(int Y, int X)> GetOrthogonalCoordinates(this Point p) => GetOrthogonalCoordinates(p.Y, p.X);
+    
+    public static IEnumerable<(int Y, int X)> GetOrthogonalCoordinates(int y, int x)
+    {
+        yield return (y - 1, x);
+        yield return (y + 1, x);
+        yield return (y, x - 1);
+        yield return (y, x + 1);
+    }
 }

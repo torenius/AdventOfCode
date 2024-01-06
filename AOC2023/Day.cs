@@ -8,8 +8,11 @@ public abstract class Day
     
     protected Day()
     {
+        Console.ForegroundColor = ConsoleColor.Gray;
+        Console.WriteLine($"{DateTime.Now:yyyy-MM-dd HH:mm:ss}");
+        
         Console.ForegroundColor = ConsoleColor.DarkRed;
-        Console.WriteLine(GetType().Name);    
+        Console.WriteLine(GetType().Name);
     }
     
     private string GetBasePath()
@@ -88,12 +91,16 @@ public abstract class Day
         PrintElapsedTime();
     }
 
-    protected void PrintElapsedTime(string comment = "")
+    protected void PrintElapsedTime(object? comment = null)
     {
         var color = Console.ForegroundColor;
         Console.ForegroundColor = ConsoleColor.White;
         Console.Write(_stopwatch.Elapsed);
         Console.ForegroundColor = color;
-        Console.WriteLine(" " + comment);
+
+        if (comment is not null)
+        {
+            Console.WriteLine(" " + comment);
+        }
     }
 }

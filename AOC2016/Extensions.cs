@@ -22,7 +22,8 @@ public static class Extensions
 
         return result.ToArray();
     }
-
+    
+    public static int ToInt(this ReadOnlySpan<char> input) => int.Parse(input);
     public static int ToInt(this string input) => int.Parse(input);
     public static long ToLong(this string input) => long.Parse(input);
 

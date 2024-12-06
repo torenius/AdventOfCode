@@ -111,4 +111,21 @@ public static class Extensions
         yield return (y, x - 1);
         yield return (y, x + 1);
     }
+    
+    public static char[,] Copy(this char[,] matrix)
+    {
+        var yLength = matrix.GetLength(0);
+        var xLength = matrix.GetLength(1);
+        var resultMatrix = new char[yLength, yLength];
+        
+        for (var y = 0; y < yLength; y++)
+        {
+            for (var x = 0; x < xLength; x++)
+            {
+                resultMatrix[y, x] = matrix[y, x];
+            }
+        }
+
+        return resultMatrix;
+    }
 }

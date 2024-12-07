@@ -27,6 +27,7 @@ public static class Extensions
     public static int ToInt(this string input) => int.Parse(input);
     public static int[] ToIntArray(this string[] input) => input.Select(int.Parse).ToArray();
     public static long ToLong(this string input) => long.Parse(input);
+    public static long[] ToLongArray(this string[] input) => input.Select(long.Parse).ToArray();
 
     public static int LCM(this IEnumerable<int> numbers) => Helper.LCM(numbers);
     public static long LCM(this IEnumerable<long> numbers) => Helper.LCM(numbers);

@@ -360,4 +360,25 @@ public static class Helper
         
         Console.WriteLine(sb.ToString());
     }
+
+    public static IEnumerable<char[]> GetPossibleCombinations(int length, params char[] letters)
+    {
+        var queue = new Queue<char[]>();
+        queue.Enqueue([]);
+
+        while (queue.Peek().Length < length)
+        {
+            var current = queue.Dequeue();
+            foreach (var letter in letters)
+            {
+                var next = current.Append(letter).ToArray();
+                queue.Enqueue(next);
+
+                if (next.Length == length)
+                {
+                    yield return next;
+                }
+            }
+        }
+    }
 }

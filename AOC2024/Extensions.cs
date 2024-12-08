@@ -32,6 +32,11 @@ public static class Extensions
     public static int LCM(this IEnumerable<int> numbers) => Helper.LCM(numbers);
     public static long LCM(this IEnumerable<long> numbers) => Helper.LCM(numbers);
 
+    /// <summary>
+    /// Imagine how many squares a chess rock needs to move to get to a specific spot.
+    /// https://en.wikipedia.org/wiki/Taxicab_geometry
+    /// </summary>
+    /// <returns>Number of squares traversed</returns>
     public static int CalculateManhattanDistance(this Point from, Point to)
     {
         var dx = Math.Abs(from.X - to.X);
@@ -39,6 +44,11 @@ public static class Extensions
         return dx + dy;
     }
     
+    /// <summary>
+    /// Imagine drawing a right triangle. Where the hypotenuse goes from point A to point B
+    /// https://en.wikipedia.org/wiki/Euclidean_distance
+    /// </summary>
+    /// <returns>Length of the hypotenuse</returns>
     public static int CalculateEuclideanDistance(this Point from, Point to)
     {
         var dx = Math.Abs(from.X - to.X);
@@ -46,6 +56,11 @@ public static class Extensions
         return (int)Math.Sqrt(dx * dx + dy * dy);
     }
     
+    /// <summary>
+    /// Imagine how many steps a chess king needs to move to get to a specific spot.
+    /// https://en.wikipedia.org/wiki/Chebyshev_distance
+    /// </summary>
+    /// <returns>Number of steps</returns>
     public static int CalculateChebyshevDistance(this Point from, Point to)
     {
         var dx = Math.Abs(from.X - to.X);

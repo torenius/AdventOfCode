@@ -9,5 +9,6 @@ using AOC2024._08;
 using AOC2024._09;
 using AOC2024._10;
 using AOC2024._11;
+using AOC2024._12;
 
-new Day11B().Start();
+new Day12A().Start();

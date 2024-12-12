@@ -34,16 +34,6 @@ public abstract class Day
         return File.ReadAllLines(Path.Combine(GetBasePath(), filename));
     }
 
-    protected List<string[]> GetInputRowAsStringArray(string filename = "input.txt", string separator = ",")
-    {
-        return GetInputAsStringArray(filename).Select(row => row.Split(separator)).ToList();
-    }
-
-    protected int[] GetInputAsIntArray(string filename = "input.txt")
-    {
-        return File.ReadLines(Path.Combine(GetBasePath(), filename)).Select(int.Parse).ToArray();
-    }
-
     protected int[,] GetInputAsIntMatrix(string filename = "input.txt")
     {
         var input = GetInputAsStringArray(filename);
@@ -52,7 +42,7 @@ public abstract class Day
         {
             for (var x = 0; x < input[y].Length; x++)
             {
-                matrix[y, x] = (int)char.GetNumericValue(input[y][x]);
+                matrix[y, x] = input[y][x].ToInt();
             }
         }
 
@@ -73,6 +63,8 @@ public abstract class Day
 
         return matrix;
     }
+    
+    protected Grid<char> GetInputAsCharGrid(string filename = "input.txt") => new(GetInputAsCharMatrix(filename));
 
     protected abstract object Run();
 

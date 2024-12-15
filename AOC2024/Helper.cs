@@ -66,7 +66,7 @@ public static class Helper
         var queue = new Queue<T>();
         queue.Enqueue(start);
 
-        while (queue.Any())
+        while (queue.Count != 0)
         {
             var current = queue.Dequeue();
             yield return current;
@@ -85,7 +85,7 @@ public static class Helper
         var queue = new Queue<T>();
         queue.Enqueue(start);
 
-        while (queue.Any())
+        while (queue.Count != 0)
         {
             var current = queue.Dequeue();
             foreach (var neighbor in children(current).Where(x => !previous.ContainsKey(x)))

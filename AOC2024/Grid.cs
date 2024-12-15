@@ -1,22 +1,23 @@
-﻿namespace AOC2024;
+﻿using System.Collections;
+using System.Text;
 
-public class Grid<T>
+namespace AOC2024;
+
+public class Grid<T> : IEnumerable<GridData<T>> where T : notnull
 {
-    private readonly T[,] _matrix;
     private readonly GridData<T>[,] _gridData;
 
     public Grid(T[,] matrix)
     {
-        _matrix = matrix;
         MaxY = matrix.GetLength(0);
         MaxX = matrix.GetLength(1);
         
-        _gridData = new GridData<T>[MaxX, MaxY];
+        _gridData = new GridData<T>[MaxY, MaxX];
         for (var y = 0; y < MaxY; y++)
         {
             for (var x = 0; x < MaxX; x++)
             {
-                _gridData[y, x] = new GridData<T>(y, x, _matrix[y, x]);
+                _gridData[y, x] = new GridData<T>(y, x, matrix[y, x]);
             }
         }
     }
@@ -26,12 +27,8 @@ public class Grid<T>
     
     public T this[int y, int x]
     {
-        get => _matrix[y, x];
-        set
-        {
-            _matrix[y, x] = value;
-            _gridData[y, x].Value = value;
-        }
+        get => _gridData[y, x].Value;
+        set => _gridData[y, x].Value = value;
     }
     
     public GridData<T> GetGridData(int y, int x) => _gridData[y, x];
@@ -49,6 +46,56 @@ public class Grid<T>
         if (IsValid(y + 1, x)) yield return GetGridData(y + 1, x);
 
         if (IsValid(y, x - 1)) yield return GetGridData(y, x - 1);
+    }
+
+    public IEnumerator<GridData<T>> GetEnumerator()
+    {
+        for (var y = 0; y < MaxY; y++)
+        {
+            for (var x = 0; x < MaxX; x++)
+            {
+                yield return _gridData[y, x];
+            }
+        }
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+    
+    public void Print()
+    {
+        var sb = new StringBuilder();
+        for (var y = 0; y < MaxY; y++)
+        {
+            for (var x = 0; x < MaxX; x++)
+            {
+                sb.Append(_gridData[y, x].Value);
+            }
+            sb.AppendLine();
+        }
+        
+        Console.WriteLine(sb.ToString());
+    }
+    
+    public void Print(Dictionary<T, ConsoleColor> colorMapping)
+    {
+        var defaultColor = Console.ForegroundColor;
+        
+        for (var y = 0; y < MaxY; y++)
+        {
+            for (var x = 0; x < MaxX; x++)
+            {
+                Console.ForegroundColor = colorMapping.GetValueOrDefault(_gridData[y, x].Value, defaultColor);
+                Console.Write(_gridData[y, x].Value);
+            }
+
+            Console.WriteLine();
+        }
+        
+        Console.WriteLine();
+        Console.ForegroundColor = defaultColor;
     }
 }
 

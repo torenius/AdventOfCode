@@ -14,5 +14,6 @@ using AOC2024._13;
 using AOC2024._14;
 using AOC2024._15;
 using AOC2024._17;
+using AOC2024._18;
 
-new Day17B().Start();
+new Day18B().Start();

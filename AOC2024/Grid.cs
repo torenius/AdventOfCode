@@ -47,6 +47,59 @@ public class Grid<T> : IEnumerable<GridData<T>> where T : notnull
 
         if (IsValid(y, x - 1)) yield return GetGridData(y, x - 1);
     }
+    
+    public IEnumerable<GridData<T>> GetDiagonalData(GridData<T> gridData) => GetDiagonalData(gridData.Y, gridData.X);
+    public IEnumerable<GridData<T>> GetDiagonalData(int y, int x)
+    {
+        if (IsValid(y - 1, x - 1)) yield return GetGridData(y - 1, x - 1);
+        
+        if (IsValid(y - 1, x + 1)) yield return GetGridData(y - 1, x + 1);
+
+        if (IsValid(y + 1, x + 1)) yield return GetGridData(y + 1, x + 1);
+
+        if (IsValid(y + 1, x - 1)) yield return GetGridData(y + 1, x - 1);
+    }
+
+    public IEnumerable<GridData<T>> GetSurroundingData(GridData<T> gridData) => GetSurroundingData(gridData.Y, gridData.X);
+    public IEnumerable<GridData<T>> GetSurroundingData(int y, int x)
+    {
+        foreach (var orthogonal in GetOrthogonalData(y, x))
+        {
+            yield return orthogonal;
+        }
+
+        foreach (var diagonal in GetDiagonalData(y, x))
+        {
+            yield return diagonal;
+        }
+    }
+
+    public IEnumerable<GridData<T>> GetDiamondData(GridData<T> center, int size) => GetDiamondData(center.Y, center.X, size);
+    public IEnumerable<GridData<T>> GetDiamondData(int centerY, int centerX, int size)
+    {
+        if (size < 0) return [];
+        if (size == 0) return [GetGridData(centerY, centerX)];
+        if (size == 1) return GetOrthogonalData(centerY, centerX);
+        
+        var result = new List<GridData<T>>();
+        result.AddRange(GetLine(centerY, centerX, size));
+        for (var y = size * -1; y < 0; y++)
+        {
+            result.AddRange(GetLine(centerY + y, centerX, size + y));
+            result.AddRange(GetLine(centerY - y, centerX, size + y));
+        }
+
+        return result;
+    }
+
+    public IEnumerable<GridData<T>> GetLine(GridData<T> center, int padding) => GetLine(center.Y, center.X, padding);
+    public IEnumerable<GridData<T>> GetLine(int centerY, int centerX, int padding)
+    {
+        for (var x = centerX - padding; x <= centerX + padding; x++)
+        {
+            if (IsValid(centerY, x)) yield return GetGridData(centerY, x);
+        }
+    }
 
     public IEnumerator<GridData<T>> GetEnumerator()
     {
@@ -97,31 +150,28 @@ public class Grid<T> : IEnumerable<GridData<T>> where T : notnull
         Console.WriteLine();
         Console.ForegroundColor = defaultColor;
     }
-}
-
-public class GridData<T>(int y, int x, T value) : IEquatable<GridData<T>>
-{
-    public int Y { get; init; } = y;
-    public int X { get; init; } = x;
-    public T Value { get; set; } = value;
-
-    public bool Equals(GridData<T>? other)
+    
+    public void Print(ICollection<GridData<T>> highlight, ConsoleColor colorMapping = ConsoleColor.Red)
     {
-        if (other is null) return false;
-        if (ReferenceEquals(this, other)) return true;
-        return Y == other.Y && X == other.X;
-    }
+        var defaultColor = Console.ForegroundColor;
+        
+        for (var y = 0; y < MaxY; y++)
+        {
+            for (var x = 0; x < MaxX; x++)
+            {
+                if (highlight.Contains(_gridData[y, x]))
+                {
+                    Console.ForegroundColor = colorMapping;
+                }
 
-    public override bool Equals(object? obj)
-    {
-        if (obj is null) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != GetType()) return false;
-        return Equals((GridData<T>)obj);
-    }
+                Console.Write(_gridData[y, x].Value);
+                Console.ForegroundColor = defaultColor;
+            }
 
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(Y, X);
+            Console.WriteLine();
+        }
+        
+        Console.WriteLine();
+        Console.ForegroundColor = defaultColor;
     }
 }

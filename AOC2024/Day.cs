@@ -86,6 +86,20 @@ public abstract class Day
         ClipboardService.SetText(result.ToString()!);
     }
 
+    private long _elapsedSinceLastPrint;
+    protected void PrintElapsedTime(object comment, TimeSpan minElapsedTime)
+    {
+        if (_stopwatch.ElapsedTicks > _elapsedSinceLastPrint + minElapsedTime.Ticks)
+        {
+            var color = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write(_stopwatch.Elapsed);
+            Console.ForegroundColor = color;
+            Console.WriteLine(" " + comment);
+            _elapsedSinceLastPrint = _stopwatch.ElapsedTicks;
+        }
+    }
+
     protected void PrintElapsedTime(object? comment = null)
     {
         var color = Console.ForegroundColor;

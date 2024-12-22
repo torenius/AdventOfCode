@@ -381,4 +381,25 @@ public static class Helper
             }
         }
     }
+    
+    public static IEnumerable<int[]> GetPossibleCombinations(int length, int[] numbers)
+    {
+        var queue = new Queue<int[]>();
+        queue.Enqueue([]);
+
+        while (queue.Peek().Length < length)
+        {
+            var current = queue.Dequeue();
+            foreach (var letter in numbers)
+            {
+                var next = current.Append(letter).ToArray();
+                queue.Enqueue(next);
+
+                if (next.Length == length)
+                {
+                    yield return next;
+                }
+            }
+        }
+    }
 }

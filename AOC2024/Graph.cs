@@ -16,6 +16,13 @@ public class Graph<T> : IEnumerable<GraphNode<T>>
     
     public List<GraphNode<T>> Nodes { get; private set; }
 
+    public GraphNode<T> AddNode(T value)
+    {
+        var node = new GraphNode<T>(value);
+        Nodes.Add(node);
+        return node;
+    }
+
     public GraphNode<T> AddOrGetIfExists(T value)
     {
         var node = Nodes.FirstOrDefault(n => n.Value.Equals(value));

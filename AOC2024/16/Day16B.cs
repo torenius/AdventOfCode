@@ -13,15 +13,15 @@ public class Day16B : Day
             if (grid.IsValid(gridData.Y, gridData.X + 1) && grid.GetGridData(gridData.Y, gridData.X + 1).Value != '#' ||
                 grid.IsValid(gridData.Y, gridData.X - 1) && grid.GetGridData(gridData.Y, gridData.X - 1).Value != '#')
             {
-                graph.AddOrGetIfExists(new Node { Y = gridData.Y, X = gridData.X, Direction = '>' });
-                graph.AddOrGetIfExists(new Node { Y = gridData.Y, X = gridData.X, Direction = '<' });
+                graph.AddNode(new Node { Y = gridData.Y, X = gridData.X, Direction = '>' });
+                graph.AddNode(new Node { Y = gridData.Y, X = gridData.X, Direction = '<' });
             }
             
             if (grid.IsValid(gridData.Y + 1, gridData.X) && grid.GetGridData(gridData.Y + 1, gridData.X).Value != '#' ||
                 grid.IsValid(gridData.Y - 1, gridData.X) && grid.GetGridData(gridData.Y - 1, gridData.X).Value != '#')
             {
-                graph.AddOrGetIfExists(new Node { Y = gridData.Y, X = gridData.X, Direction = '^' });
-                graph.AddOrGetIfExists(new Node { Y = gridData.Y, X = gridData.X, Direction = 'v' });
+                graph.AddNode(new Node { Y = gridData.Y, X = gridData.X, Direction = '^' });
+                graph.AddNode(new Node { Y = gridData.Y, X = gridData.X, Direction = 'v' });
             }
         }
 

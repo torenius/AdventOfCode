@@ -5,6 +5,8 @@ public class GridData<T>(int y, int x, T value) : IEquatable<GridData<T>>
     public int Y { get; init; } = y;
     public int X { get; init; } = x;
     public T Value { get; set; } = value;
+    
+    public override string? ToString() => Value?.ToString();
 
     public bool Equals(GridData<T>? other)
     {

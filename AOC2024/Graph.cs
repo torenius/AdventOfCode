@@ -46,7 +46,6 @@ public class Graph<T> : IEnumerable<GraphNode<T>>
     public GraphNode<T> this[int i] => Nodes[i];
 
     public int Count => Nodes.Count;
-    public bool Contains(GraphNode<T> node) => Nodes.Contains(node);
     public IEnumerator<GraphNode<T>> GetEnumerator() => Nodes.GetEnumerator();
 
     IEnumerator IEnumerable.GetEnumerator()

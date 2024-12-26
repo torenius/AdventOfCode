@@ -9,10 +9,6 @@ public class Graph<T> : IEnumerable<GraphNode<T>>
     {
         Nodes = [];
     }
-    public Graph(List<GraphNode<T>> nodes)
-    {
-        Nodes = nodes;
-    }
     
     public List<GraphNode<T>> Nodes { get; private set; }
 
@@ -35,13 +31,13 @@ public class Graph<T> : IEnumerable<GraphNode<T>>
         return node;
     }
     
-    public void AddDirectedEdge(GraphNode<T> from, GraphNode<T> to, int cost = 0)
+    public void AddDirectedEdge(GraphNode<T> from, GraphNode<T> to, int cost = 1)
     {
         from.Neighbors.Add(to);
         from.Costs.Add(cost);
     }
 
-    public void AddUndirectedEdge(GraphNode<T> from, GraphNode<T> to, int cost = 0)
+    public void AddUndirectedEdge(GraphNode<T> from, GraphNode<T> to, int cost = 1)
     {
         from.Neighbors.Add(to);
         from.Costs.Add(cost);

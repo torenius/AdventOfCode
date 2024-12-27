@@ -25,8 +25,7 @@ public class Day21A : Day
         var third = GetDirectionalOptions(GetDirectionalOptions(keyPad.GetOptions(code[2])));
         var fourth = GetDirectionalOptions(GetDirectionalOptions(keyPad.GetOptions(code[3])));
 
-        var result = AllCombinations([first, second, third, fourth]);
-        return result.MinBy(r => r.Length);
+        return first.MinBy(f => f.Length) + second.MinBy(l => l.Length) + third.MinBy(t => t.Length) + fourth.MinBy(f => f.Length);
     }
 
     private List<string> GetDirectionalOptions(List<string> options)

@@ -111,5 +111,9 @@ public abstract class Day
         {
             Console.WriteLine(" " + comment);
         }
+        else
+        {
+            Console.WriteLine();
+        }
     }
 }

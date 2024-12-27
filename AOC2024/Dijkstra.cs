@@ -54,7 +54,6 @@ public static class Dijkstra
                 path.Add((current, cost));
             }
             
-            path.Reverse();
             return path;
         }
     }
@@ -191,7 +190,6 @@ public static class Dijkstra
                 path.Add((current, cost));
             }
             
-            path.Reverse();
             return path;
         }
     }

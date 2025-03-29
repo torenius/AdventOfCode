@@ -4,6 +4,7 @@ using AOC2016._03;
 using AOC2016._04;
 using AOC2016._05;
 using AOC2016._06;
+using AOC2016._07;
 
 namespace AOCTest;
 
@@ -44,4 +45,10 @@ public class Aoc2016
     
     [Fact]
     public void Day06B() => Assert.Equal("ryrgviuv", new Day06B().Test());
+    
+    [Fact]
+    public void Day07A() => Assert.Equal(115, new Day07A().Test());
+    
+    [Fact]
+    public void Day07B() => Assert.Equal(231, new Day07B().Test());
 }

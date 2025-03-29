@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using AOC.Common;
 
 namespace AOC2016._05;
 

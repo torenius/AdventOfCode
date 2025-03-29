@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Text;
 
-namespace AOC2024;
+namespace AOC.Common;
 
 public static class Extensions
 {

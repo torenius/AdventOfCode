@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
+using AOC.Common;
 
 namespace AOC2024._14;
 

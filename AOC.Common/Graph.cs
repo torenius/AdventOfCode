@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 
-namespace AOC2024;
+namespace AOC.Common;
 
 public class Graph<T> : IEnumerable<GraphNode<T>> 
     where T : IEquatable<T>

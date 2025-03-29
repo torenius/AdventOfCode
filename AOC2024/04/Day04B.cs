@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using AOC.Common;
 
 namespace AOC2024._04;
 

@@ -1,4 +1,6 @@
-﻿namespace AOC2024._05;
+﻿using AOC.Common;
+
+namespace AOC2024._05;
 
 public class Day05B : Day
 {

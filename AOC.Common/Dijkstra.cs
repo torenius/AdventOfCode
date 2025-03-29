@@ -1,4 +1,4 @@
-﻿namespace AOC2024;
+﻿namespace AOC.Common;
 
 //  https://andrewlock.net/implementing-dijkstras-algorithm-for-finding-the-shortest-path-between-two-nodes-using-priorityqueue-in-dotnet-9/
 public static class Dijkstra

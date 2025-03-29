@@ -1,4 +1,4 @@
-﻿namespace AOC2024;
+﻿namespace AOC.Common;
 
 public class GridData<T>(int y, int x, T value) : IEquatable<GridData<T>>
 {

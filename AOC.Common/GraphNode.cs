@@ -1,4 +1,4 @@
-﻿namespace AOC2024;
+﻿namespace AOC.Common;
 
 public class GraphNode<T>(T value) : IEquatable<GraphNode<T>> 
     where T : IEquatable<T>

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Text;
 
-namespace AOC2024;
+namespace AOC.Common;
 
 public class Grid<T> : IEnumerable<GridData<T>> where T : notnull
 {

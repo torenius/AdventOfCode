@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using TextCopy;
 
-namespace AOC2024;
+namespace AOC.Common;
 
 public abstract class Day
 {

@@ -5,7 +5,7 @@ namespace AOC2024;
 
 public abstract class Day
 {
-    private Stopwatch _stopwatch;
+    private Stopwatch _stopwatch = null!;
     
     protected Day()
     {
@@ -19,7 +19,7 @@ public abstract class Day
     private string GetBasePath()
     {
         const string basePath = @"C:\project\AdventOfCode\";
-        var folder = GetType().Namespace.Replace("._", "\\");
+        var folder = GetType().Namespace!.Replace("._", "\\");
 
         return Path.Combine(basePath, folder);
     }
@@ -84,6 +84,12 @@ public abstract class Day
         PrintElapsedTime();
         
         ClipboardService.SetText(result.ToString()!);
+    }
+
+    public object Test()
+    {
+        _stopwatch = new Stopwatch();
+        return Run();
     }
 
     private long _elapsedSinceLastPrint;

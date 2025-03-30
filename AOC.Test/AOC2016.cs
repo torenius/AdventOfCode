@@ -1,10 +1,12 @@
-﻿using AOC2016._01;
+﻿using AOC.Common;
+using AOC2016._01;
 using AOC2016._02;
 using AOC2016._03;
 using AOC2016._04;
 using AOC2016._05;
 using AOC2016._06;
 using AOC2016._07;
+using AOC2016._08;
 
 namespace AOCTest;
 
@@ -51,4 +53,10 @@ public class Aoc2016
     
     [Fact]
     public void Day07B() => Assert.Equal(231, new Day07B().Test());
+    
+    [Fact]
+    public void Day08A() => Assert.Equal(128, new Day08A().Test());
+    
+    [Fact] // EOARGPHYAO
+    public void Day08B() => Assert.Equal("####..##...##..###...##..###..#..#.#...#.##...##..\n#....#..#.#..#.#..#.#..#.#..#.#..#.#...##..#.#..#.\n###..#..#.#..#.#..#.#....#..#.####..#.#.#..#.#..#.\n#....#..#.####.###..#.##.###..#..#...#..####.#..#.\n#....#..#.#..#.#.#..#..#.#....#..#...#..#..#.#..#.\n####..##..#..#.#..#..###.#....#..#...#..#..#..##..".ReplaceNewLines(""), ((string)new Day08B().Test()).ReplaceNewLines(""));
 }

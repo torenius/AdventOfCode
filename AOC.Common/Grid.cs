@@ -7,6 +7,21 @@ public class Grid<T> : IEnumerable<GridData<T>> where T : notnull
 {
     private readonly GridData<T>[,] _gridData;
 
+    public Grid(int width, int height, T defaultValue)
+    {
+        MaxY = height;
+        MaxX = width;
+        
+        _gridData = new GridData<T>[MaxY, MaxX];
+        for (var y = 0; y < MaxY; y++)
+        {
+            for (var x = 0; x < MaxX; x++)
+            {
+                _gridData[y, x] = new GridData<T>(y, x, defaultValue);
+            }
+        }
+    }
+    
     public Grid(T[,] matrix)
     {
         MaxY = matrix.GetLength(0);
@@ -101,6 +116,22 @@ public class Grid<T> : IEnumerable<GridData<T>> where T : notnull
         }
     }
 
+    public IEnumerable<GridData<T>> GetRow(int y)
+    {
+        for (var x = 0; x < MaxX; x++)
+        {
+            yield return GetGridData(y, x);
+        }
+    }
+    
+    public IEnumerable<GridData<T>> GetColumn(int x)
+    {
+        for (var y = 0; y < MaxY; y++)
+        {
+            yield return GetGridData(y, x);
+        }
+    }
+
     public IEnumerator<GridData<T>> GetEnumerator()
     {
         for (var y = 0; y < MaxY; y++)
@@ -117,7 +148,7 @@ public class Grid<T> : IEnumerable<GridData<T>> where T : notnull
         return GetEnumerator();
     }
     
-    public void Print()
+    public string Print()
     {
         var sb = new StringBuilder();
         for (var y = 0; y < MaxY; y++)
@@ -128,8 +159,11 @@ public class Grid<T> : IEnumerable<GridData<T>> where T : notnull
             }
             sb.AppendLine();
         }
+
+        var result = sb.ToString();
+        Console.WriteLine(result);
         
-        Console.WriteLine(sb.ToString());
+        return result;
     }
     
     public void Print(Dictionary<T, ConsoleColor> colorMapping)

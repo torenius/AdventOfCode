@@ -12,6 +12,9 @@ public static class Extensions
     public static long ToLong(this string input) => long.Parse(input);
     public static long ToLong(this char input) => (long)char.GetNumericValue(input);
     public static long[] ToLongArray(this string[] input) => input.Select(long.Parse).ToArray();
+    
+    public static string ReplaceNewLines(this string input, string newValue) =>
+        input.Replace("\r\n", "\n").Replace("\n", newValue);
 
     public static int LCM(this IEnumerable<int> numbers) => Helper.LCM(numbers);
     public static long LCM(this IEnumerable<long> numbers) => Helper.LCM(numbers);

@@ -7,6 +7,7 @@ using AOC2016._05;
 using AOC2016._06;
 using AOC2016._07;
 using AOC2016._08;
+using AOC2016._09;
 
 namespace AOCTest;
 
@@ -59,4 +60,10 @@ public class Aoc2016
     
     [Fact] // EOARGPHYAO
     public void Day08B() => Assert.Equal("####..##...##..###...##..###..#..#.#...#.##...##..\n#....#..#.#..#.#..#.#..#.#..#.#..#.#...##..#.#..#.\n###..#..#.#..#.#..#.#....#..#.####..#.#.#..#.#..#.\n#....#..#.####.###..#.##.###..#..#...#..####.#..#.\n#....#..#.#..#.#.#..#..#.#....#..#...#..#..#.#..#.\n####..##..#..#.#..#..###.#....#..#...#..#..#..##..".ReplaceNewLines(""), ((string)new Day08B().Test()).ReplaceNewLines(""));
+    
+    [Fact]
+    public void Day09A() => Assert.Equal(183269, new Day09A().Test());
+    
+    [Fact]
+    public void Day09B() => Assert.Equal(11317278863, new Day09B().Test());
 }

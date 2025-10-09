@@ -8,6 +8,7 @@ using AOC2016._06;
 using AOC2016._07;
 using AOC2016._08;
 using AOC2016._09;
+using AOC2016._10;
 
 namespace AOCTest;
 
@@ -66,4 +67,10 @@ public class Aoc2016
     
     [Fact]
     public void Day09B() => Assert.Equal(11317278863, new Day09B().Test());
+    
+    [Fact]
+    public void Day10A() => Assert.Equal(56, new Day10A().Test());
+    
+    [Fact]
+    public void Day10B() => Assert.Equal(7847, new Day10B().Test());
 }

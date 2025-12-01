@@ -30,6 +30,7 @@
     <ItemGroup>
       <ProjectReference Include="..\AOC2016\AOC2016.csproj" />
       <ProjectReference Include="..\AOC2024\AOC2024.csproj" />
+      <ProjectReference Include="..\AOC2025\AOC2025.csproj" />
     </ItemGroup>
 
 </Project>

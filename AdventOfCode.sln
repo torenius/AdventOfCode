@@ -16,6 +16,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOC.Test", "AOC.Test\AOC.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOC.Common", "AOC.Common\AOC.Common.csproj", "{B0B34425-0C54-4EBD-9B78-9823079E2271}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOC2025", "AOC2025\AOC2025.csproj", "{A9B63D44-9123-4F2F-B422-E00AFAFF5D19}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,5 +56,9 @@ Global
 		{B0B34425-0C54-4EBD-9B78-9823079E2271}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0B34425-0C54-4EBD-9B78-9823079E2271}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0B34425-0C54-4EBD-9B78-9823079E2271}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9B63D44-9123-4F2F-B422-E00AFAFF5D19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9B63D44-9123-4F2F-B422-E00AFAFF5D19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9B63D44-9123-4F2F-B422-E00AFAFF5D19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9B63D44-9123-4F2F-B422-E00AFAFF5D19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -53,6 +53,7 @@ public class Day02B : Day
                     if (isInvalid)
                     {
                         InvalidValues.Add(i);
+                        break;
                     }
                 }
             }
@@ -60,7 +61,7 @@ public class Day02B : Day
 
         public long From { get; set; }
         public long To { get; set; }
-        public HashSet<long> InvalidValues { get; set; }
+        public List<long> InvalidValues { get; set; }
         
         public override string ToString() => $"{From}-{To} InvalidValues: {string.Join(",", InvalidValues)}";
     }

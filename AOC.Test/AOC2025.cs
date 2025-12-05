@@ -34,4 +34,7 @@ public class AOC2025
     
     [Fact]
     public void Day05A() => Assert.Equal(758, new Day05A().Test());
+    
+    [Fact]
+    public void Day05B() => Assert.Equal(343143696885053, new Day05B().Test());
 }

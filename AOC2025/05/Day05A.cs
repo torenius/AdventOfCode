@@ -28,7 +28,7 @@ public class Day05A : Day
             }
         }
 
-        long fresh = 0;
+        var fresh = 0;
         foreach (var ingredient in ingredients)
         {
             foreach (var range in ranges)

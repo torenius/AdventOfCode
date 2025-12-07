@@ -4,5 +4,6 @@ using AOC2025._03;
 using AOC2025._04;
 using AOC2025._05;
 using AOC2025._06;
+using AOC2025._07;
 
-new Day06B().Start();
+new Day07B().Start();

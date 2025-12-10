@@ -43,7 +43,7 @@ public class Day09B : Day
         var k = 0;
         var printTime = TimeSpan.FromSeconds(3);
         foreach (var box in boxes
-                     .Where(b => b.Size <= 1461987144) // It took 3 min and 10 seconds. Having this Where here to make the unit test fast....
+                     .Where(b => b.Size <= 1461987144) // It took 2 min and 13 seconds. Having this Where here to make the unit test fast....
                      .OrderByDescending(b => b.Size))
         {
             k++;
@@ -89,19 +89,29 @@ public class Day09B : Day
             var minY = Math.Min(Top.Y, Bottom.Y);
             var maxX = Math.Max(Top.X, Bottom.X);
             var maxY = Math.Max(Top.Y, Bottom.Y);
-
-            yield return new Point((maxX - minX) / 2 + minX, minY);
-            yield return new Point((maxX - minX) / 2 + minX, maxY);
-            yield return new Point(minX, (maxY - minY) / 2 + minY);
-            yield return new Point(maxX, (maxY - minY) / 2 + minY);
-
-            for (var y = minY + 1; y < maxY; y++)
+            
+            var middleX = (maxX - minX) / 2 + minX;
+            var middleY = (maxY - minY) / 2 + minY;
+            
+            for (var y = middleY; y < maxY; y++)
             {
                 yield return new Point(minX, y);
                 yield return new Point(maxX, y);
             }
             
-            for (var x = minX + 1; x < maxX; x++)
+            for (var y = middleY - 1; y > minY + 1; y--)
+            {
+                yield return new Point(minX, y);
+                yield return new Point(maxX, y);
+            }
+            
+            for (var x = middleX; x < maxX; x++)
+            {
+                yield return new Point(x, minY);
+                yield return new Point(x, maxY);
+            }
+            
+            for (var x = middleX - 1; x > minX + 1; x--)
             {
                 yield return new Point(x, minY);
                 yield return new Point(x, maxY);

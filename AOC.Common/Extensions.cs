@@ -9,6 +9,7 @@ public static class Extensions
     public static int ToInt(this string input) => int.Parse(input);
     public static int ToInt(this char input) => (int)char.GetNumericValue(input);
     public static int[] ToIntArray(this string[] input) => input.Select(int.Parse).ToArray();
+    public static List<int> ToIntList(this string[] input) => input.Select(int.Parse).ToList();
     public static long ToLong(this string input) => long.Parse(input);
     public static long ToLong(this char input) => (long)char.GetNumericValue(input);
     public static long[] ToLongArray(this string[] input) => input.Select(long.Parse).ToArray();

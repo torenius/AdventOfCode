@@ -64,8 +64,8 @@ public class AOC2025
     [Fact]
     public void Day09A() => Assert.Equal(4767418746, new Day09A().Test());
     
-    // [Fact]
-    // public void Day09B() => Assert.Equal(4767418746, new Day09B().Test());
+    [Fact]
+    public void Day09B() => Assert.Equal(1461987144, (long)new Day09B().Test());
     
     [Fact]
     public void Day10A() => Assert.Equal(401, new Day10A().Test());

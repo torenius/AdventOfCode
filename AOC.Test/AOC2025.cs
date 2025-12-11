@@ -8,6 +8,7 @@ using AOC2025._07;
 using AOC2025._08;
 using AOC2025._09;
 using AOC2025._10;
+using AOC2025._11;
 
 namespace AOCTest;
 
@@ -72,5 +73,11 @@ public class AOC2025
     
     // [Fact]
     // public void Day10B() => Assert.Equal(401, new Day10B().Test());
+    
+    [Fact]
+    public void Day11A() => Assert.Equal(523, new Day11A().Test());
+    
+    [Fact]
+    public void Day11B() => Assert.Equal(517315308154944, new Day11B().Test());
     
 }

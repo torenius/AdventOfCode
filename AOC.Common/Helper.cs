@@ -27,17 +27,14 @@ public static class Helper
         return a;
     }
 
+    public static int GCD(IEnumerable<int> numbers) => numbers.Aggregate(GCD);
+    public static long GCD(IEnumerable<long> numbers) => numbers.Aggregate(GCD);
+
     public static int LCM(int a, int b) => (a / GCD(a, b)) * b;
     public static long LCM(long a, long b) => (a / GCD(a, b)) * b;
 
-    public static int LCM(IEnumerable<int> numbers)
-    {
-        return numbers.Aggregate((sum, n) => LCM(sum, n));
-    }
-    public static long LCM(IEnumerable<long> numbers)
-    {
-        return numbers.Aggregate((sum, n) => LCM(sum, n));
-    }
+    public static int LCM(IEnumerable<int> numbers) => numbers.Aggregate(LCM);
+    public static long LCM(IEnumerable<long> numbers) => numbers.Aggregate(LCM);
 
     public static int Min(int a, int b)
     {

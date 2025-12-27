@@ -166,9 +166,11 @@ public class Aoc2024
     // public void Day22B() => Assert.Equal((long)1898, new Day22B().Test());
     
     [Fact]
+    [Trait("Slow", "About 15 seconds")]
     public void Day23A() => Assert.Equal(1046, new Day23A().Test());
     
     [Fact]
+    [Trait("Slow", "About 24 seconds")]
     public void Day23B() => Assert.Equal("de,id,ke,ls,po,sn,tf,tl,tm,uj,un,xw,yz", new Day23B().Test());
     
     [Fact]

@@ -17,6 +17,8 @@ public static class Extensions
     public static string ReplaceNewLines(this string input, string newValue) =>
         input.Replace("\r\n", "\n").Replace("\n", newValue);
 
+    public static int GCD(this IEnumerable<int> numbers) => Helper.GCD(numbers);
+    public static long GCD(this IEnumerable<long> numbers) => Helper.GCD(numbers);
     public static int LCM(this IEnumerable<int> numbers) => Helper.LCM(numbers);
     public static long LCM(this IEnumerable<long> numbers) => Helper.LCM(numbers);
 
